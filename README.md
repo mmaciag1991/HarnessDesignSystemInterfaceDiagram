@@ -59,4 +59,15 @@ javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
 # Run
 * Copy HarnessTestersData folder to F drive
 * You will need mssql server
-
+* database.proporties
+You can fill in the data in the file manually or wait for the dialog box to appear at the start of the application
+```
+#Sun Feb 16 18:06:30 CET 2020
+user=yourUserName
+db=yourDatabaseName
+port=1433
+password=yourPassword
+host=yourDatabaseHost
+winautentation=false
+```
+After establishing connection with the database, the application will create tables automatically
