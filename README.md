@@ -56,5 +56,7 @@ javafx.web
 javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
 ```
 
-
+# Run
+* Copy HarnessTestersData folder to F drive
+* You will need mssql server
 
