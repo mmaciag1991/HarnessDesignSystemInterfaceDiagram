@@ -1,0 +1,31 @@
+/*
+    Created on : 03/04/2017, 16:30:52
+    Author     : Gleidson Neves da Silveira
+*/
+
+
+.gn-decorator {
+    -grey : #00000020;
+    -info : #33B5E5;
+    -fx-background-color : -info;
+    -fx-border-color: white;
+}
+
+.gn-buttons .button {
+    -fx-background-color : transparent;
+    -fx-background-radius :0;
+    -fx-border-width : 0;
+}
+
+.gn-buttons * *, .gn-title, .gn-menu * {
+    -gn-fill : white;
+    -fx-text-fill : white;
+    -fx-fill : white;
+
+}
+
+.gn-buttons .button:hover
+{
+    -fx-background-color : -grey;
+}
+

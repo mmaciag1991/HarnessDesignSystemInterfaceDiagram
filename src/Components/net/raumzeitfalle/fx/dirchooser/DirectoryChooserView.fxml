@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+<VBox fx:id="directoryChooserView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" style="-fx-border-color: gray;" stylesheets="@../../../../../resources/style/jmetro/JMetroDarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane styleClass="background" VBox.vgrow="ALWAYS">
+         <children>
+            <TextField fx:id="selectedDirectory" editable="false" minHeight="20.0" prefHeight="20.0" prefWidth="398.0" promptText="(shows the selected directory)">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </TextField>
+            <TreeView fx:id="directoryTree" editable="true" prefHeight="283.0" prefWidth="282.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0">
+               <styleClass>
+                  <String fx:value="column-header" />
+                  <String fx:value="table-view-small" />
+               </styleClass></TreeView>
+         </children>
+      </AnchorPane>
+      <HBox alignment="CENTER_LEFT" prefHeight="6.0" prefWidth="398.0" styleClass="background" VBox.vgrow="NEVER">
+         <children>
+            <Button fx:id="refreshButton" contentDisplay="RIGHT" maxHeight="29.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="100.0" style="-fx-effect: null;" styleClass="table-view-small" text="Odśwież" textAlignment="CENTER" HBox.hgrow="ALWAYS">
+               <graphic>
+                  <SVGPath content="M 11.238064,4.536129 C 10.35567,3.7099033 9.2105485,3.256992 7.9957099,3.2580645 5.8093955,3.2599808 3.9219356,4.7590564 3.4008023,6.838508 3.3628623,6.989883 3.2280038,7.0967742 3.0719431,7.0967742 H 1.4545201 C 1.242883,7.0967742 1.0821089,6.9046411 1.121258,6.6966451 1.7319798,3.4535 4.5793992,1 8,1 9.8755485,1 11.578778,1.7377097 12.835504,2.9386896 L 13.843589,1.9306049 C 14.270335,1.5038589 15,1.8061008 15,2.409625 v 3.7839234 c 0,0.374133 -0.303286,0.6774193 -0.67742,0.6774193 h -3.783922 c -0.6035246,0 -0.9057671,-0.7296653 -0.479021,-1.1564394 z M 1.6774193,9.129032 h 3.7839231 c 0.6035242,0 0.9057667,0.729666 0.4790205,1.15644 l -1.1784273,1.178427 c 0.8823947,0.826254 2.0276008,1.279165 3.2424674,1.278065 2.185186,-0.002 4.073408,-1.500033 4.594795,-3.580416 0.03793,-0.151375 0.172798,-0.2582657 0.328859,-0.2582657 h 1.617451 c 0.211637,0 0.372412,0.1921327 0.333263,0.4001287 C 14.26802,12.5465 11.420601,15 8,15 6.1244515,15 4.421222,14.26229 3.1644963,13.061311 l -1.008085,1.008084 C 1.7296653,14.496141 1,14.193899 1,13.590375 V 9.806452 C 1,9.432319 1.3032863,9.129032 1.6774193,9.129032 Z" styleClass="tool-bar-icon" />
+               </graphic>
+               <HBox.margin>
+                  <Insets left="16.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="okButton" maxHeight="1.7976931348623157E308" maxWidth="0.0" mnemonicParsing="false" text="Wybierz Folder" visible="false" HBox.hgrow="ALWAYS" />
+            <Button fx:id="cancelButton" maxHeight="1.7976931348623157E308" maxWidth="0.0" mnemonicParsing="false" text="Cancel" visible="false" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </children>
+</VBox>

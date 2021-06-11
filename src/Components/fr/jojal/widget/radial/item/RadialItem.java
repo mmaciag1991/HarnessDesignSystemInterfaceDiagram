@@ -1,0 +1,338 @@
+package Components.fr.jojal.widget.radial.item;
+
+import javafx.beans.property.*;
+import javafx.geometry.Point2D;
+import javafx.scene.Group;
+import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.ArcTo;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+
+
+public class RadialItem extends Group {
+	
+	protected static final int ANGLE_TO_START_AT_ZERO_DEGREE = -90;
+
+	private DoubleProperty innerRadius;
+	private DoubleProperty outerRadius;
+	private DoubleProperty length;
+	private DoubleProperty startAngle;
+	private DoubleProperty gap;
+
+
+	private ObjectProperty<ImageView> image;
+	
+	private Path path = new Path();
+	protected MoveTo moveTo = new MoveTo();
+	protected ArcTo arcToInner = new ArcTo();
+	protected ArcTo arcTo = new ArcTo();
+	protected LineTo lineTo = new LineTo();
+	protected LineTo lineTo2 = new LineTo();
+
+    private Text textShape = new Text();
+
+    private StringProperty text;
+
+	public BooleanProperty selected = new SimpleBooleanProperty(false);
+
+	public RadialItem() {
+
+		this.path.setId("radialItem");
+
+		this.path.getElements().add(moveTo);
+		this.path.getElements().add(lineTo);
+		this.path.getElements().add(arcTo);
+		this.path.getElements().add(lineTo2);
+		this.path.getElements().add(arcToInner);
+
+		getChildren().add(this.path);
+		textShape.setMouseTransparent(true);
+		textShape.setFill(Color.LIGHTGRAY);
+		textShape.setFont(Font.font("Verdana", FontWeight.EXTRA_BOLD, 9));
+
+//		setOnMousePressed(mouseEvent -> {
+//			mouseEvent.consume();
+//		});
+
+	}
+
+	public void checkItemInitialize(){
+//		Image checked = new Image("/resources/images/success.png");
+//		ImageView checkedImg = new ImageView(checked);
+//		checkedImg.setFitWidth(16);
+//		checkedImg.setFitHeight(16);
+//
+//		Image unchecked = new Image("/resources/images/error.png");
+//		ImageView uncheckedImg = new ImageView(unchecked);
+//		uncheckedImg.setFitWidth(16);
+//		uncheckedImg.setFitHeight(16);
+//		setImage(uncheckedImg);
+		setOnMouseClicked(mouseEvent -> {
+			selected.set(!selected.get());
+
+			//System.out.println(selected + " is " + selected.get());
+		});
+
+		selected.addListener((observableValue, aBoolean, t1) -> {
+			if (t1){
+				this.path.setStyle("-fx-fill:  derive(rgba(0, 148, 189, 1), -20%);");
+				this.textShape.setFill(Color.BLACK);
+				//getImage().setImage(checked);
+				//setImage(checkedImg);
+			}else{
+				this.path.setStyle("-fx-fill: linear-gradient(derive(#1d1d1d,20%), derive(#1d1d1d,20%));");
+				this.textShape.setFill(Color.LIGHTGRAY);
+				//getImage().setImage(unchecked);
+				//setImage(uncheckedImg);
+			}
+		});
+
+	}
+	    
+
+	public RadialItem(double innerRadius, double outerRadius, 
+			double arcLengthAngle, double startAngle) {
+	
+		this();
+		
+		innerRadiusProperty().set(innerRadius);
+		outerRadiusProperty().set(outerRadius);
+		lengthProperty().set(arcLengthAngle);
+		startAngleProperty().set(startAngle);
+
+        textShape.setMouseTransparent(true);
+	}
+
+
+	protected void update() {
+		
+		//Arc lenght angle
+		double arcAngleLengthInRadians = Math.toRadians(getLength());
+
+        //Angle rotation of the item
+		double startAngleInRadians = Math.toRadians(getStartAngle() + ANGLE_TO_START_AT_ZERO_DEGREE);
+
+		moveTo.setX(getInnerRadius() * Math.cos(startAngleInRadians));
+		moveTo.setY(getInnerRadius() * Math.sin(startAngleInRadians));
+		
+		lineTo.setX(getOuterRadius() * Math.cos(startAngleInRadians));
+		lineTo.setY(getOuterRadius() * Math.sin(startAngleInRadians));
+		
+		arcTo.setX(getOuterRadius() * Math.cos(startAngleInRadians+arcAngleLengthInRadians - Math.asin(getGap() / getOuterRadius())));
+		arcTo.setY(getOuterRadius() * Math.sin(startAngleInRadians+arcAngleLengthInRadians - Math.asin(getGap() / getOuterRadius())));
+		arcTo.setRadiusX(getOuterRadius());
+		arcTo.setRadiusY(getOuterRadius());
+		arcTo.setSweepFlag(true);
+		arcTo.setLargeArcFlag(getLength() > 180);
+		
+		lineTo2.setX(getInnerRadius() * Math.cos(startAngleInRadians+arcAngleLengthInRadians - Math.asin(getGap() / getInnerRadius())));
+		lineTo2.setY(getInnerRadius() * Math.sin(startAngleInRadians+arcAngleLengthInRadians - Math.asin(getGap() / getInnerRadius())));
+		
+		arcToInner.setX(getInnerRadius() * Math.cos(startAngleInRadians));
+		arcToInner.setY(getInnerRadius() * Math.sin(startAngleInRadians));
+		arcToInner.setRadiusX(getInnerRadius());
+		arcToInner.setRadiusY(getInnerRadius());
+		arcToInner.setSweepFlag(false);
+		arcToInner.setLargeArcFlag(getLength() > 180);
+		
+		double centerRadius = (getOuterRadius() + getInnerRadius()) / 2;
+		Point2D centerOfPath = new Point2D(centerRadius*Math.cos(startAngleInRadians + arcAngleLengthInRadians/2),
+				centerRadius*Math.sin(startAngleInRadians + arcAngleLengthInRadians/2));
+		double rotationAngle = getStartAngle() + ((getOuterRadius() - getInnerRadius()) / 2);
+//		if(getStartAngle() > 75 && getStartAngle() < 270) {
+//			rotationAngle += 180;
+//		}
+		rotationAngle += 180;
+		if(this.getImage() != null) {
+//            double width = this.getImage().getBoundsInLocal().getWidth();
+//            double height =this.getImage().getBoundsInLocal().getHeight();
+
+
+			//this.getImage().relocate(centerOfPath.getX() - width/2, centerOfPath.getY()-height/2);
+			this.getImage().relocate(path.getBoundsInLocal().getCenterX(), path.getBoundsInLocal().getCenterY());
+			this.getImage().setRotate(rotationAngle);
+
+
+//			if (this.getImage().getImage().getUrl().endsWith("arrow_d.png")) {
+//				this.getImage().setRotate(getRotate());
+//			}
+
+		}
+
+
+        if(this.getText() != null && !this.getText().isEmpty()) {
+            double width = this.textShape.getBoundsInLocal().getWidth();
+            double height =this.textShape.getBoundsInLocal().getHeight();
+            this.textShape.relocate(centerOfPath.getX() - width / 2, centerOfPath.getY() - height / 2);
+
+            this.textShape.setRotate(rotationAngle+24);
+
+        }
+
+	}
+	
+	
+    /************************************************************/
+    public final DoubleProperty innerRadiusProperty() {
+        if (innerRadius == null) {
+        	innerRadius = new SimpleDoubleProperty(this, "innerRadius") {
+        		@Override
+        		protected void invalidated() {
+        			update();
+        		}
+        	};
+        }
+        return innerRadius;
+    }
+    
+    public final double getInnerRadius() {
+    	return innerRadiusProperty().get();
+    }
+    
+    public final void setInnerRadius(double innerRadius) {
+    	this.innerRadiusProperty().set(innerRadius);
+    }
+    
+    /************************************************************/
+    public final DoubleProperty outerRadiusProperty() {
+        if (outerRadius == null) {
+        	outerRadius = new SimpleDoubleProperty(this, "outerRadius") {
+        		@Override
+        		protected void invalidated() {
+        			update();
+        		}
+        	};
+        }
+        return outerRadius;
+    }
+    
+    public final double getOuterRadius() {
+    	return outerRadiusProperty().get();
+    }
+    
+    public final void setOuterRadius(double outerRadius) {
+    	this.outerRadiusProperty().set(outerRadius);
+    }
+    
+    /************************************************************/
+    public final DoubleProperty lengthProperty() {
+        if (length == null) {
+        	length = new SimpleDoubleProperty(this, "length") {
+        		@Override
+        		protected void invalidated() {
+        			update();
+        		}
+        	};
+        }
+        return length;
+    }
+    
+    public final double getLength() {
+    	return lengthProperty().get();
+    }
+    
+    public final void setLength(double length) {
+    	this.lengthProperty().set(length);
+    } 
+    
+    /************************************************************/
+    public final DoubleProperty startAngleProperty() {
+        if (startAngle == null) {
+        	startAngle = new SimpleDoubleProperty(this, "startAngle") {
+        		@Override
+        		protected void invalidated() {
+        			update();
+        		}
+        	};
+        }
+        return startAngle;
+    }
+    
+    public final double getStartAngle() {
+    	return startAngleProperty().get();
+    }
+    
+    public final void setStartAngle(double startAngle) {
+    	this.startAngleProperty().set(startAngle);
+    } 
+    /************************************************************/
+    public final DoubleProperty gapProperty() {
+        if (gap == null) {
+        	gap = new SimpleDoubleProperty(this, "gap") {
+        		@Override
+        		protected void invalidated() {
+        			update();
+        		}
+        	};
+        }
+        return gap;
+    }
+    
+    public final double getGap() {
+    	return gapProperty().get();
+    }
+    
+    public final void setGap(double gap) {
+    	this.gapProperty().set(gap);
+    } 
+    /************************************************************/
+    public final ObjectProperty<ImageView> imageProperty() {
+        if (image == null) {
+        	image = new SimpleObjectProperty<ImageView>(this, "image") {
+        		@Override
+        		protected void invalidated() {
+        			if(getChildren().contains(get())) {
+        				getChildren().remove(get());
+        			}
+        			getChildren().add(get());
+                    get().setMouseTransparent(true);
+        			update();
+        		}
+        	};
+        }
+        return image;
+    }
+    
+    public final ImageView getImage() {
+    	return imageProperty().get();
+    }
+    
+    public final void setImage(ImageView image) {
+    	this.imageProperty().set(image);
+    }
+
+    /************************************************************/
+    public final StringProperty textProperty() {
+        if (text == null) {
+            text = new SimpleStringProperty(this, "text") {
+                @Override
+                protected void invalidated() {
+                    if(!getChildren().contains(textShape)) {
+                        getChildren().add(textShape);
+                    }
+                    textShape.setText(get());
+                    update();
+                }
+            };
+        }
+        return text;
+    }
+
+    public final String getText() {
+        return textProperty().get();
+    }
+
+    public final void setText(String text) {
+        this.textProperty().set(text);
+    }
+
+    /************************************************************/
+    public Path getPath() {
+		return path;
+	}
+}

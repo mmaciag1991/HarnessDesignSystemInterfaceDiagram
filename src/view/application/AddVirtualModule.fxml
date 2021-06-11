@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="440.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DSI_Graph_Main_Controlers.AddVirtualModuleControler">
+   <children>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="700.0" style="-fx-border-color: -fx-focus-color;" styleClass="background" stylesheets="@../../resources/style/jmetro/JMetroDarkTheme.css">
+         <children>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="29.0" prefWidth="700.0">
+               <children>
+                  <Label text="Dodaj moduł">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="340.0" prefWidth="600.0">
+               <children>
+                  <GridPane prefHeight="282.0" prefWidth="700.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="80.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="549.0" minWidth="10.0" prefWidth="520.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="5.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="52.0" minHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="84.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="84.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="183.0" minHeight="10.0" prefHeight="159.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Xcode:" GridPane.rowIndex="1" />
+                        <Label text="Kod Klienta: " GridPane.rowIndex="2" />
+                        <Label text="GM Kod: " GridPane.rowIndex="3" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="xCode">
+                           <GridPane.margin>
+                              <Insets right="50.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="customerCode" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets right="50.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="gmCode" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets right="50.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <GridPane GridPane.columnSpan="2" GridPane.rowIndex="5">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="144.0" minWidth="10.0" prefWidth="70.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="10.0" prefWidth="150.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="245.0" minWidth="10.0" prefWidth="70.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="10.0" prefWidth="150.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="5.0" minHeight="10.0" prefHeight="5.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="5.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Startowy Kord. X" GridPane.rowIndex="1" />
+                              <Label text="Startowy Kord. Y" GridPane.rowIndex="2" />
+                              <Label text="Punktów Testujących" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <Label text="Punktów Detekcji" GridPane.rowIndex="4" />
+                              <Label text="Końcowy Kord. X" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Label text="Końcowy Kord. Y" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="startX" prefWidth="150.0" style="-fx-border-color: rgba(100,100,100,.4);" styleClass="table-view-small" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="startY" prefWidth="150.0" style="-fx-border-color: rgba(100,100,100,.4);" styleClass="table-view-small" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="endX" prefWidth="150.0" style="-fx-border-color: rgba(100,100,100,.4);" styleClass="table-view-small" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="endY" prefWidth="150.0" style="-fx-border-color: rgba(100,100,100,.4);" styleClass="table-view-small" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                              <Separator prefWidth="200.0" style="-fx-background-color: -fx-focus-color;" styleClass="table-view-small" GridPane.columnSpan="4" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </GridPane.margin></Separator>
+                              <Separator prefWidth="200.0" style="-fx-background-color: -fx-focus-color;" styleClass="table-view-small" GridPane.columnSpan="4" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" right="10.0" />
+                                 </GridPane.margin></Separator>
+                              <Spinner fx:id="switches" editable="true" styleClass="table-view-small" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Spinner fx:id="pins" editable="true" styleClass="table-view-small" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                              <Label text="By dodać moduł 50x50 wartości startowe i końcowe ustaw takie same." GridPane.columnSpan="4" />
+                           </children>
+                        </GridPane>
+                        <Separator prefWidth="200.0" style="-fx-background-color: -fx-focus-color;" styleClass="table-view-small" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin></Separator>
+                        <Separator prefWidth="200.0" style="-fx-background-color: -fx-focus-color;" styleClass="table-view-small" GridPane.columnSpan="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </GridPane.margin></Separator>
+                     </children>
+                  </GridPane>
+               </children>
+            </HBox>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="56.0" prefWidth="698.0">
+               <children>
+                  <Button fx:id="virtualModuleOKbtn" defaultButton="true" mnemonicParsing="false" text="Dodaj" />
+                  <Button fx:id="virtualModuleCancelbtn" mnemonicParsing="false" text="Anulij">
+                     <HBox.margin>
+                        <Insets left="15.0" right="15.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

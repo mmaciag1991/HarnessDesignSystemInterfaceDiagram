@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Class-Path: Liblary\controlsfx-8.40.13.jar Liblary\fontawesomefx-commo
+ ns-8.13.jar Liblary\fontawesomefx-fontawesome-4.7.0-1.jar Liblary\jod
+ a-time-2.9.1.jar Liblary\recurrence-8.5.1.jar Liblary\view-8.5.1.jar 
+ Liblary\sqljdbc42.jar
+Main-Class: MainApp.MainClassApplication
+

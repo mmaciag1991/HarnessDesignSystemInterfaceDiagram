@@ -1,0 +1,33 @@
+/*.background {
+    -fx-background-color: #1d1d1d;
+    -fx-background-image: url("bp.jpg");
+    -fx-font-size: 18;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #f04747;
+    -fx-border-insets: 0 1 1 0;
+    -fx-padding: 0px 0px 0px 1px;
+}*/
+
+#radialItem {
+    -fx-fill: linear-gradient(derive(#1d1d1d,20%), derive(#1d1d1d,20%));
+    -fx-stroke: linear-gradient(derive(#1d1d1d,-40%), derive(#1d1d1d,-40%));
+    -fx-stroke-width: 2;
+    -fx-text-fill: #f04747;
+    -fx-font-size: 18;
+        -fx-font-family: "Segoe UI Light";
+}
+
+#radialItem:pressed {
+   -fx-fill: linear-gradient(derive(#1d1d1d,10%), derive(#1d1d1d,-10%));
+   -fx-stroke: linear-gradient(derive(#1d1d1d,+40%), derive(#1d1d1d,+40%));
+   -fx-stroke-width: 2;
+-fx-text-fill: #f04747;
+}
+
+
+#radialItem:selected {
+    -fx-fill: linear-gradient(derive(#1d1d1d),-20%), derive(#1d1d1d,-20%));
+    -fx-stroke:  derive(rgba(77, 151, 161, 0.6), -20%);
+    -fx-stroke-width: 2;
+    -fx-text-fill: #f04747;
+}

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxWidth="1000.0" prefHeight="275.0" prefWidth="930.0" style="-fx-background-color: rgba(17,17,17,0.8);" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DSI_Graph_Main_Controlers.Preloader">
+   <children>
+      <ImageView fitHeight="284.0" fitWidth="930.0" focusTraversable="true" opacity="0.35" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../resources/image/preloader_bg.png" />
+         </image>
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="866.0" opacity="0.59" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="866.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../Graph_ModulesLeyautTable_Engine/Main/ico.png" />
+         </image>
+         <effect>
+            <Lighting diffuseConstant="1.07">
+               <bumpInput>
+                  <Shadow blurType="ONE_PASS_BOX" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <Label layoutX="15.0" layoutY="-2.0" opacity="0.99" prefHeight="65.0" prefWidth="863.0" text="Harness Design System Interface Diagram" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="-2.0">
+         <font>
+            <Font name="Impact" size="49.0" />
+         </font>
+         <effect>
+            <Lighting diffuseConstant="0.58">
+               <bumpInput>
+                  <Shadow blurType="ONE_PASS_BOX" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </Label>
+      <Label fx:id="textLabel" layoutX="14.0" layoutY="161.0" opacity="0.48" style="-fx-text-fill: Gold;" text="Trwa inicjalizacja danych" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="3.0">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <ProgressBar fx:id="progressBar" layoutX="10.0" layoutY="105.0" minHeight="6.0" opacity="0.85" prefHeight="7.0" prefWidth="570.0" progress="0.37" stylesheets="@../../resources/style/jmetro/JMetroDarkTheme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <effect>
+            <Lighting>
+               <bumpInput>
+                  <Shadow />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect></ProgressBar>
+   </children>
+</AnchorPane>

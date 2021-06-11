@@ -1,0 +1,29 @@
+
+/*
+    Created on : 03/04/2017, 16:30:52
+    Author     : Gleidson Neves da Silveira
+*/
+
+.gn-decorator {
+    -grey : #00000020;
+    -red : #e04343;
+    -fx-background-image : url("/img/wall2.jpg");
+    -fx-background-size : cover;
+}
+
+.gn-buttons * {
+    -fx-background-radius :0;
+}
+
+.gn-buttons .button:hover
+{
+    -fx-background-color : -grey;
+}
+
+.gn-buttons .gn-close:hover {
+    -fx-background-color : -red;
+}
+
+.gn-buttons .gn-close:hover * {
+    -gn-fill : white;
+}

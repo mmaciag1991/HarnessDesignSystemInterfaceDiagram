@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane styleClass="background" stylesheets="@../../resources/style/jmetro/JMetroDarkTheme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DSI_Graph_Main_Controlers.DSI_Model">
+   <children>
+      <AnchorPane fx:id="tabAnchorPane" prefHeight="700.0" prefWidth="1500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TabPane fx:id="tabPane" layoutX="14.0" layoutY="25.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(29,29,29,.6);" styleClass="table-view-small" stylesheets="@../../resources/style/jmetro/JMetroDarkTheme.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <tabs>
+                <Tab fx:id="mainTab" closable="false" text="Główna Karta">
+                     <content>
+                        <AnchorPane fx:id="mainTabAnhorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="background-square">
+                           <children>
+                              <VBox prefWidth="1000.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="Referencje:" />
+                                    <TableView fx:id="ReferencesTable" maxHeight="1.7976931348623157E308" prefHeight="1000.0" prefWidth="1103.0" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="ReferenceColumn" prefWidth="157.0" text="Referencja" />
+                                          <TableColumn fx:id="VersionColumn" prefWidth="66.0" text="Wersja" />
+                                          <TableColumn fx:id="DateColumn" prefWidth="101.0" text="Data" />
+                                          <TableColumn fx:id="VariantColumn" prefWidth="172.0" text="Wariant" />
+                                          <TableColumn fx:id="VariableColumn" prefWidth="500.0" text="Zmienne" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="testerTableBox" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="1205.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="Testery:" />
+                                    <TableView fx:id="TestersTable" maxHeight="1.7976931348623157E308" prefHeight="980.0" prefWidth="715.0" stylesheets="@../../resources/style/jmetro/JMetroDarkTheme.css" tableMenuButtonVisible="true">
+                                       <columns>
+                                          <TableColumn fx:id="IdColumn" prefWidth="75.0" text="Id" />
+                                          <TableColumn fx:id="NameColumn" prefWidth="250.0" text="Nazwa" />
+                                          <TableColumn fx:id="ColumnsColumn" minWidth="0.0" prefWidth="98.0" text="Kolumny (X)" />
+                                          <TableColumn fx:id="RowsColumn" minWidth="0.0" prefWidth="152.0" text="Wiersze (Y)" />
+                                       </columns>
+                                    </TableView>
+                                 </children>
+                              </VBox>
+                              <Button fx:id="start" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" graphicTextGap="0.0" mnemonicParsing="false" onAction="#startAnalise" opacity="0.6" prefHeight="30.0" prefWidth="83.0" rotate="270.0" style="-fx-font-size: 15;" styleClass="table-view-small" text="Analizuj  " visible="false" wrapText="true" AnchorPane.leftAnchor="1130.0" />
+                              <Button mnemonicParsing="false" onAction="#addTesterData" style="-fx-font-size: 10;" styleClass="table-view-small" text="Załaduj Layout" visible="false" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="50.0">
+                                 <font>
+                                    <Font size="11.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <VBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="125.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label fx:id="cpu" style="-fx-font-size: 8;" text="CPU: " textAlignment="CENTER" textFill="WHITE" />
+                  <Label fx:id="ram" style="-fx-font-size: 8;" text="RAM: " textAlignment="CENTER" textFill="WHITE" />
+               </children>
+            </VBox>
+            <TitledPane fx:id="cepuMemPane" alignment="CENTER" contentDisplay="CENTER" expanded="false" layoutX="30.0" layoutY="550.0" styleClass="table-view-small" text="Uzucie procesora i pamieci" textAlignment="CENTER" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="30.0">
+               <content>
+                  <HBox fx:id="cpuPane" prefHeight="150.0" prefWidth="405.0" spacing="5.0" styleClass="table-view-small" />
+               </content>
+            </TitledPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
