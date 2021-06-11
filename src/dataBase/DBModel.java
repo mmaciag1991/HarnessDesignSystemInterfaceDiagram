@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package dataBase;
 
 import javafx.fxml.FXMLLoader;
@@ -67,17 +63,6 @@ public class DBModel {
                     "                    UNIQUE (Id ASC));");
 
             pst.execute();
-            /**pst = con.mkDataBase().prepareStatement("CREATE TABLE IF not exists "+db+".`Brands` (\n"
-                    + "  `Id` int(11) NOT NULL AUTO_INCREMENT,\n"
-                    + "  `BrandName` varchar(70) DEFAULT NULL,\n"
-                    + "  `Description` text DEFAULT NULL,\n"
-                    + "  `SupplyerId` varchar(20)  DEFAULT NULL,\n"
-                    + "  `CreatorId` int DEFAULT NULL,\n"
-                    + "  `Date` date,\n"
-                    + "  PRIMARY KEY (`Id`),\n"
-                    + "  UNIQUE INDEX `Id` (`Id` ASC));");
-
-            pst.execute();**/
 
             pst = con.mkDataBaseDB().prepareStatement("IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Catagory' and xtype='U')  \n" +
                     "CREATE TABLE Catagory (\n" +
@@ -92,18 +77,7 @@ public class DBModel {
                     "                    UNIQUE (Id ASC));");
 
             pst.execute();
-            /**pst = con.mkDataBase().prepareStatement("CREATE TABLE IF not exists "+db+".`Catagory` (\n"
-             + "  `Id` int(11) NOT NULL AUTO_INCREMENT,\n"
-             + "  `CatagoryName` varchar(70) DEFAULT NULL,\n"
-             + "  `CatagoryDescription` text DEFAULT NULL,\n"
-             + "  `BrandId` varchar(20) DEFAULT NULL,\n"
-             + "  `SupplyerId` int(11) DEFAULT NULL,\n"
-             + "  `CreatorId` int(11) DEFAULT NULL,\n"
-             + "  `Date` date,\n"
-             + "  PRIMARY KEY (`Id`),\n"
-             + "  UNIQUE INDEX `Id` (`Id` ASC));");
-
-             pst.execute();**/
+         
             pst = con.mkDataBaseDB().prepareStatement("IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Unit' and xtype='U')  \n" +
                     "CREATE TABLE Unit (\n" +
                     "                    Id int NOT NULL,\n" +
@@ -115,18 +89,7 @@ public class DBModel {
                     "                    UNIQUE (Id ASC));");
 
             pst.execute();
-/**
-            pst = con.mkDataBase().prepareStatement("CREATE TABLE IF not exists "+db+".`Unit` (\n"
-                    + "  `Id` int(11) NOT NULL AUTO_INCREMENT,\n"
-                    + "  `UnitName` varchar(50) DEFAULT NULL,\n"
-                    + "  `UnitDescription` text DEFAULT NULL,\n"
-                    + "  `CreatorId` int(11) DEFAULT NULL,\n"
-                    + "  `Date` date,\n"
-                    + "  PRIMARY KEY (`Id`),\n"
-                    + "  UNIQUE INDEX `Id` (`Id` ASC));");
 
-            pst.execute();
-*/
             pst = con.mkDataBaseDB().prepareStatement("IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='RMA' and xtype='U')  \n" +
                     "CREATE TABLE RMA (\n" +
                     "                      Id int NOT NULL,\n" +
@@ -139,17 +102,7 @@ public class DBModel {
                     "                      UNIQUE (Id ASC));");
 
             pst.execute();
-            /** pst = con.mkDataBase().prepareStatement("CREATE TABLE IF not exists "+db+".`RMA` (\n"
-             + "  `Id` int(11) NOT NULL AUTO_INCREMENT,\n"
-             + "  `RMAName` varchar(100) DEFAULT NULL,\n"
-             + "  `RMADays` varchar(11) NOT NULL,\n"
-             + "  `Comment` text DEFAULT NULL,\n"
-             + "  `CreatorId` int(11) DEFAULT NULL,\n"
-             + "  `Date` date,\n"
-             + "  PRIMARY KEY (`Id`),\n"
-             + "  UNIQUE INDEX `Id` (`Id` ASC));");
 
-             pst.execute();**/
             pst = con.mkDataBaseDB().prepareStatement("IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Products' and xtype='U')  \n" +
                     "CREATE TABLE Products (\n" +
                     "                      Id int NOT NULL,\n" +
@@ -169,28 +122,8 @@ public class DBModel {
                     "                      PRIMARY KEY (Id),\n" +
                     "                      UNIQUE (Id ASC));");
             pst.execute();
-            /** pst = con.mkDataBase().prepareStatement("CREATE TABLE IF NOT EXISTS "+db+".`Products` (\n"
-             + "  `Id` int(11) NOT NULL AUTO_INCREMENT,\n"
-             + "  `ProductId` varchar(20) NOT NULL,\n"
-             + "  `ProductName` varchar(150) NOT NULL,\n"
-             + "  `Quantity` varchar(11) NOT NULL DEFAULT '0', \n"
-             + "  `Description` text ,\n"
-             + "  `SupplyerId` varchar(11) NOT NULL,\n"
-             + "  `BrandId` varchar(11) NOT NULL,\n"
-             + "  `CatagoryId` varchar(11) NOT NULL,\n"
-             + "  `UnitId` varchar(11) NOT NULL,\n"
-             + "  `PursesPrice` varchar(100) NOT NULL,\n"
-             + "  `SellPrice` varchar(100) NOT NULL,\n"
-             + "  `RMAId` varchar(11) NOT NULL,\n"
-             + "  `UserId` varchar(11) NOT NULL,\n"
-             + "  `Date` date NOT NULL,\n"
-             + "  PRIMARY KEY (`Id`),\n"
-             + "  UNIQUE INDEX `Id` (`Id` ASC));");
-             pst.execute();
-             */
 
-
-            pst = con.mkDataBaseDB().prepareStatement("IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Customer' and xtype='U')  \n" +
+           pst = con.mkDataBaseDB().prepareStatement("IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Customer' and xtype='U')  \n" +
                     "CREATE TABLE Customer (\n" +
                     "               Id int NOT NULL,\n" +
                     "               CustomerName varchar(200) NOT NULL,\n" +
@@ -203,17 +136,6 @@ public class DBModel {
                     "               UNIQUE (Id ASC));");
             pst.execute();
 
-            /** pst = con.mkDataBase().prepareStatement("CREATE TABLE IF NOT EXISTS "+db+".`Customer` (\n"
-             + "  `Id` int(11) NOT NULL AUTO_INCREMENT,\n"
-             + "  `CustomerName` varchar(200) NOT NULL,\n"
-             + "  `CustomerContNo` varchar(200) DEFAULT NULL,\n"
-             + "  `CustomerAddress` text,\n"
-             + "  `TotalBuy` varchar(50) DEFAULT NULL,\n"
-             + "  `CreatorId` varchar(11) DEFAULT NULL,\n"
-             + "  `Date` datetime NOT NULL,\n"
-             + "  PRIMARY KEY (`Id`),\n"
-             + "  UNIQUE INDEX `Id` (`Id` ASC));");
-             pst.execute();**/
 
             pst = con.mkDataBaseDB().prepareStatement("IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Sell' and xtype='U')  \n" +
                     "CREATE TABLE Sell (\n" +
@@ -252,21 +174,7 @@ public class DBModel {
                     "                      PRIMARY KEY (Id)\n" +
                             "                    );");
             pst.execute();
-            /**  pst = con.mkDataBase().prepareStatement("CREATE TABLE IF NOT EXISTS "+db+".`Sell` (\n"
-             + "  `Id` int(11) NOT NULL AUTO_INCREMENT,\n"
-             + "  `SellId` varchar(10) NOT NULL,\n"
-             + "  `CustomerId` varchar(11) NOT NULL,\n"
-             + "  `ProductId` varchar(11) NOT NULL,\n"
-             + "  `PursesPrice` double NOT NULL,\n"
-             + "  `SellPrice` double NOT NULL,\n"
-             + "  `Quantity` int(10) NOT NULL,\n"
-             + "  `TotalPrice` double NOT NULL,\n"
-             + "  `WarrentyVoidDate` varchar(20) NOT NULL,\n"
-             + "  `SellerId` int(11) NOT NULL,\n"
-             + "  `SellDate` datetime NOT NULL,\n"
-             + "  PRIMARY KEY (`Id`)\n"
-             + ") ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;");
-             pst.execute();*/
+
 
             pst = con.mkDataBaseDB().prepareStatement("IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Testers' and xtype='U')  \n" +
                     "CREATE TABLE Testers (\n" +
