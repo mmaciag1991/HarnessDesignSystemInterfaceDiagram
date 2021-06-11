@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Layout>
     <tester id="2021-05-27T16:28:33.431194900">
-        <testerName>VOL02</testerName>
+        <testerName>TemplateTester</testerName>
         <cols>72</cols>
         <rows>12</rows>
     </tester>
