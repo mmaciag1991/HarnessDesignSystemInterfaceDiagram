@@ -55,5 +55,5 @@ javafx.web
 javafx.graphics/com.sun.glass.ui=ALL-UNNAMED
 ```
 
-![]( ![1623409905004](https://user-images.githubusercontent.com/46632727/121735075-eb651280-caf5-11eb-8aaf-4a727acad908.jpg)
+![DiagramView]( ![1623409905004](https://user-images.githubusercontent.com/46632727/121735075-eb651280-caf5-11eb-8aaf-4a727acad908.jpg)
 HarnessDesignSystemInterfaceDiagram/1623409905004.jpg ).
